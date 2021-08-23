@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://sn1per-ssd.github.io/2021/04/07/vulnstack(%E4%B8%80)%E9%9D%B6%E6%9C%BA/image-20210608220705.png">
 <meta property="og:image" content="https://sn1per-ssd.github.io/2021/04/07/vulnstack(%E4%B8%80)%E9%9D%B6%E6%9C%BA/imag-20210608221729.png">
 <meta property="article:published_time" content="2021-04-07T08:57:47.000Z">
-<meta property="article:modified_time" content="2021-06-08T14:25:32.039Z">
+<meta property="article:modified_time" content="2021-08-17T02:25:11.726Z">
 <meta property="article:author" content="Sn1pEr">
 <meta property="article:tag" content="靶机">
 <meta property="article:tag" content="内网">
@@ -346,10 +346,10 @@ var _hmt = _hmt || [];
 <p>这次我们用nmap扫描一下，得到一个漏洞：</p>
 <p><img src="./img-20210413153142.png"></p>
 <p>用msf的模块打了一下，直接把我VM打炸了，打算试试其他的，但看到mimikatz读取出来的密码是初始密码（顺带一提，mimikatz是读取lsass.exe进程中保存的令牌然后进行破解），不是我修改后的密码，我就知道不可能用网上的SMB大法了（SMB Beacon使用命名管道通过父级Beacon进行通讯，当两个Beacons链接后，子Beacon从父Beacon获取到任务并发送。因为链接的Beacons使用Windows命名管道进行通信，此流量封装在SMB协议中，所以SMB Beacon相对隐蔽，绕防火墙时可能发挥奇效。）。</p>
-<p>把靶机放在服务器上之后好多了，继续开工，不过msf和cs联动就不整了，直接挂代理吧</p>
+<p>把靶机放在服务器上之后好多了，kali地址变成了172.16.43.52，win7的IP变成了172.16.43.8。继续开工，不过msf和cs联动就不整了，直接挂代理吧</p>
 <p>继续打，打了一趟，发现原来是蓝屏了，这tm就很尴尬了。试了一下，发现只有<code>exploit/windows/smb/ms17_010_psexec</code>和<code>auxiliary/admin/smb/ms17_010_command</code>能用。</p>
 <p>用<code>exploit/windows/smb/ms17_010_psexec</code>的时候发现每次都是执行成功但没有创建session。想了下，发现了原因：因为138也就是域控服务器不能出网，只能到我们控制的这台win7服务器。</p>
-<p>于是我们可以有这样的思路：利用内网穿透工具设置反向代理，将kali机的某个端口代理到win7的某个端口上。这里我用的是frp（练一下咋用嘛）。参考了<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43820662/article/details/109289778">这个师傅的思路</a>。</p>
+<p>于是我们可以有这样的思路：利用内网穿透工具设置反向代理，将kali机的某个端口转发到win7的某个端口上。这里我用的是frp（练一下咋用嘛）。参考了<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43820662/article/details/109289778">这个师傅的思路</a>。</p>
 <h4 id="拿下域控"><a href="#拿下域控" class="headerlink" title="拿下域控"></a>拿下域控</h4><p>将frps相关文件上传到win7上，并修改配置文件，然后启动：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port &#x3D; 7010</span><br></pre></td></tr></table></figure>
 <p>kali修改frpc配置文件，并启动：</p>
@@ -361,6 +361,7 @@ var _hmt = _hmt || [];
 <p><img src="./imag-20210608221729.png"></p>
 <p>然后可以在没代理的msf上得到session。</p>
 <p>红日团队的打法：<a target="_blank" rel="noopener" href="https://www.freebuf.com/column/231111.html">ATT&amp;CK实战 | Vulnstack 红队（一） - FreeBuf网络安全行业门户</a></p>
+<p>写的有点乱，中间隔了太久，见谅。</p>
 
     
 
@@ -726,6 +727,10 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提权</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nmap</a>
               </li>
              
@@ -742,15 +747,15 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Misc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">靶机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Misc</a>
               </li>
              
               <li class="article-tag-list-item">
