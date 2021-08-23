@@ -18,7 +18,7 @@
 <meta property="og:description" content="经常用的代理">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-23T12:20:19.000Z">
-<meta property="article:modified_time" content="2021-04-01T11:43:34.812Z">
+<meta property="article:modified_time" content="2021-08-23T15:34:32.708Z">
 <meta property="article:author" content="Sn1pEr">
 <meta property="article:tag" content="代理">
 <meta name="twitter:card" content="summary">
@@ -241,7 +241,7 @@ var _hmt = _hmt || [];
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">260字</span>
+      <span class="post-count">268字</span>
     </span>
   </span>
 
@@ -272,9 +272,10 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">socks5  192.168.233.1 10808</span><br><span class="line">#协议 网关 端口</span><br></pre></td></tr></table></figure>
 <p>使用方法为：<br><code>proxychains + 命令</code>，如<code>proxychains git clone https://github.com/DasSecurity-Labs/AoiAWD.git</code></p>
 <h2 id="windows的powershell"><a href="#windows的powershell" class="headerlink" title="windows的powershell"></a>windows的powershell</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netsh winhttp <span class="built_in">set</span> proxy <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">10809</span>   <span class="comment">#使用代理</span></span><br><span class="line">netsh winhttp reset proxy   <span class="comment">#关闭代理</span></span><br></pre></td></tr></table></figure>
-<h2 id="gitbash"><a href="#gitbash" class="headerlink" title="gitbash"></a>gitbash</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git config --global https.proxy http://127.0.0.1:10809</span><br><span class="line"></span><br><span class="line">git config --global https.proxy https://127.0.0.1:10809</span><br><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line">npm config delete proxy</span><br></pre></td></tr></table></figure>
+<h2 id="gitbash"><a href="#gitbash" class="headerlink" title="gitbash"></a>gitbash</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git config --global https.proxy http://127.0.0.1:10809</span><br><span class="line"></span><br><span class="line">git config --global https.proxy http://127.0.0.1:10809</span><br><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line">npm config delete proxy</span><br></pre></td></tr></table></figure>
 <p>但当git clone ssh通道时，无法通过该代理，需要修改一下文件：</p>
 <p><code>~/.ssh/config</code>（没有就创建一个）</p>
+<p>改.gitconfig和–global是一样的</p>
 <h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">    User git</span><br><span class="line">    ProxyCommand connect -S 127.0.0.1:7891 %h %p</span><br></pre></td></tr></table></figure>
 <p>或</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">    User git</span><br><span class="line">    ProxyCommand connect -H 127.0.0.1:7890 %h %p</span><br></pre></td></tr></table></figure>
@@ -616,6 +617,14 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">dedecms</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码审计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">OGNL</a>
               </li>
              
@@ -625,14 +634,6 @@ gitalk.render('gitalk-container')
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jsp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dedecms</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码审计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,6 +669,10 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">代理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">靶机</a>
               </li>
              
@@ -680,15 +685,7 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">代理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,11 +693,15 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">端口号</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">源码泄露</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">端口号</a>
               </li>
              
               <li class="article-tag-list-item">
