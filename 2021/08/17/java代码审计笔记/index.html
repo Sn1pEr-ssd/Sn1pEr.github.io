@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://sn1per-ssd.github.io/2021/08/17/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0/img-20210717130144.png">
 <meta property="article:published_time" content="2021-08-17T02:03:54.000Z">
-<meta property="article:modified_time" content="2021-08-17T02:22:05.189Z">
+<meta property="article:modified_time" content="2021-09-19T01:02:24.905Z">
 <meta property="article:author" content="Sn1pEr">
 <meta property="article:tag" content="代码审计">
 <meta name="twitter:card" content="summary">
@@ -243,7 +243,7 @@ var _hmt = _hmt || [];
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">190字</span>
+      <span class="post-count">482字</span>
     </span>
   </span>
 
@@ -266,14 +266,24 @@ var _hmt = _hmt || [];
     <p>尝试审了一下某个基于springboot的博客系统，学到了一点关于springboot的小知识，记一下。</p>
 <a id="more"></a>
 
-<p>springboot不需要配置tomcat，自带tomcat，用maven通过pom.xml直接安装就行了</p>
+<p>springboot不需要配置tomcat，自带tomcat，用maven通过pom.xml直接安装就行了，运行也可以直接运行，但上传jasp文件基本无法解析，需要解析要单独配置</p>
 <h3 id="找控制器"><a href="#找控制器" class="headerlink" title="找控制器"></a>找控制器</h3><ol>
 <li>我这个还挺好找的，直接有个文件夹名字叫controller，文件名里也带了controller。</li>
 <li>一般来说，在文件里都会有<code>@Controller</code>这样的注解，下面就会有<code>@requestmapping</code>的注解，用来展示http请求的路径（大概是这样叫吧）或者<code>@ResponseBody</code>用来将数据写入响应对象的主体</li>
 <li>idea里，打开spring项目后，他会自动分析springboot的mvc结构，如图：</li>
 </ol>
 <p><img src="./img-20210717130144.png"></p>
+<ol start="4">
+<li>bean，用来存放数据；dao，对数据库进行增删改查；servlet，对用户的请求进行处理和响应；util，连接数据库；filter，过滤器，一般用来进行字符过滤等等操作</li>
+</ol>
 <h3 id="找配置文件等"><a href="#找配置文件等" class="headerlink" title="找配置文件等"></a>找配置文件等</h3><p>一般在<code>项目目录/src/main/resources/</code>下的某个文件或文件夹里</p>
+<h3 id="其他例子"><a href="#其他例子" class="headerlink" title="其他例子"></a>其他例子</h3><p>之前复现了致远sursenServlet的fastjson，环境没删，想拿着玩一下，就试着跟了一下致远的登录过程，主要是过程还是很有意思的，可以做以后的参考。</p>
+<h4 id="拉跨操作"><a href="#拉跨操作" class="headerlink" title="拉跨操作"></a>拉跨操作</h4><p>首先是来到登录页面，看前端我们可以知道，<code>main.do?method=login</code>就是处理登录的位置，正好，web目录下又有一个main的文件夹，然后我就点进去了（踩坑了），在main文件夹中，又好死不死有login这个文件夹，进去一看，login_header.jsp和一堆css，显然，找错了。</p>
+<h4 id="正常操作"><a href="#正常操作" class="headerlink" title="正常操作"></a>正常操作</h4><ol>
+<li>找开发手册：<a target="_blank" rel="noopener" href="http://open.seeyon.com/book/ctp/summary/portal-manual.html%EF%BC%88%E4%B8%80%E8%88%AC%E6%9D%A5%E8%AF%B4%E7%94%A8%E6%9D%A5%E4%BA%86%E8%A7%A3%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%89">http://open.seeyon.com/book/ctp/summary/portal-manual.html（一般来说用来了解项目结构）</a></li>
+<li>找web.xml，一般控制器和过滤器都会在里面进行注册</li>
+<li>通过刚刚的</li>
+</ol>
 
     
 
@@ -430,7 +440,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">找控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AD%89"><span class="toc-number">2.</span> <span class="toc-text">找配置文件等</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">找控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AD%89"><span class="toc-number">2.</span> <span class="toc-text">找配置文件等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%BE%8B%E5%AD%90"><span class="toc-number">3.</span> <span class="toc-text">其他例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E8%B7%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">3.1.</span> <span class="toc-text">拉跨操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%B8%B8%E6%93%8D%E4%BD%9C"><span class="toc-number">3.2.</span> <span class="toc-text">正常操作</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -603,11 +613,7 @@ gitalk.render('gitalk-container')
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dedecms</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码审计</a>
+                <a href="javascript:void(0)" class="js-tag color1">APP测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,7 +629,11 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">APP测试</a>
+                <a href="javascript:void(0)" class="js-tag color3">dedecms</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码审计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,15 +701,19 @@ gitalk.render('gitalk-container')
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">源码泄露</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tips</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">源码泄露</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">端口号</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">红蓝对抗</a>
               </li>
              
               <li class="article-tag-list-item">

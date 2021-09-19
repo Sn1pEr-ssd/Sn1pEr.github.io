@@ -6,23 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://sn1per-ssd.github.io">
-  <title>OGNL入门 | Sn1pEr&#39;s blog</title>
+  <title>Category: 红蓝对抗 | Sn1pEr&#39;s blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="复现struct2 漏洞的时候看到的东西，先记一下可以学习的博客，以后再学">
-<meta property="og:type" content="article">
-<meta property="og:title" content="OGNL入门">
-<meta property="og:url" content="https://sn1per-ssd.github.io/2021/03/04/OGNL%E5%85%A5%E9%97%A8/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Sn1pEr&#39;s blog">
+<meta property="og:url" content="https://sn1per-ssd.github.io/categories/%E7%BA%A2%E8%93%9D%E5%AF%B9%E6%8A%97/index.html">
 <meta property="og:site_name" content="Sn1pEr&#39;s blog">
-<meta property="og:description" content="复现struct2 漏洞的时候看到的东西，先记一下可以学习的博客，以后再学">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-04T11:58:51.000Z">
-<meta property="article:modified_time" content="2021-03-06T06:29:05.328Z">
 <meta property="article:author" content="Sn1pEr">
-<meta property="article:tag" content="OGNL">
-<meta property="article:tag" content="struct2">
-<meta property="article:tag" content="jsp">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Sn1pEr&#39;s blog" type="application/atom+xml">
@@ -210,276 +203,76 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-OGNL入门" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2021/09/14/%E6%9F%90%E6%AC%A1%E7%BA%A2%E8%93%9D%E5%AD%A6%E5%88%B0%E7%9A%84%E4%B8%80%E7%82%B9%E4%B8%9C%E8%A5%BF/" class="archive-article-date">
+        <time datetime="2021-09-14T13:43:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-14</time>
+</a>
+
+        </div>
+    	 
   
-  
-    <h1 class="article-title" itemprop="name">
-      OGNL入门
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2021/09/14/%E6%9F%90%E6%AC%A1%E7%BA%A2%E8%93%9D%E5%AD%A6%E5%88%B0%E7%9A%84%E4%B8%80%E7%82%B9%E4%B8%9C%E8%A5%BF/">某次红蓝学到的一点东西</a>
+	
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2021/03/04/OGNL%E5%85%A5%E9%97%A8/" class="archive-article-date">
-        <time datetime="2021-03-04T11:58:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-04</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">814字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>复现struct2 漏洞的时候看到的东西，先记一下可以学习的博客，以后再学</p>
-<a id="more"></a>
-
-<p>OGNL（Object-Graph Navigation Language）是对象导航图语言，是应用于java中的一个开源的表达式语言，被集成在strust2中。</p>
-<p>Ognl有一个上下文（Context）对象实现了map接口（这个map可以<strong>简单理解</strong>为C语言的map、python里的字典，拥有键值对关系）</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chaos-li/p/12067752.html">https://www.cnblogs.com/chaos-li/p/12067752.html</a></p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/mmm123lmj/article/details/4527898">http://blog.csdn.net/mmm123lmj/article/details/4527898</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.ognl.test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> ognl.Ognl;</span><br><span class="line"><span class="keyword">import</span> junit.framework.TestCase;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * http://blog.csdn.net/mmm123lmj/article/details/4527898</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Administrator</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OgnlTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">/*获得类属性，以及使用root getValue*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_01</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		User user = <span class="keyword">new</span> User();</span><br><span class="line">		user.setUsername(<span class="string">&quot;dirk&quot;</span>);</span><br><span class="line">		</span><br><span class="line">		String value = (String) Ognl.getValue(<span class="string">&quot;username&quot;</span>, user);</span><br><span class="line">		System.out.println(value);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_02</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		User user = <span class="keyword">new</span> User();</span><br><span class="line">		Person p = <span class="keyword">new</span> Person();</span><br><span class="line">		p.setUsername(<span class="string">&quot;dallas&quot;</span>);</span><br><span class="line">		user.setPerson(p);</span><br><span class="line">		</span><br><span class="line">		String value = (String) Ognl.getValue(<span class="string">&quot;person.username&quot;</span>, user); </span><br><span class="line">		System.out.println(value);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_03</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		User user = <span class="keyword">new</span> User();</span><br><span class="line">		Person p = <span class="keyword">new</span> Person();</span><br><span class="line">		p.setUsername(<span class="string">&quot;dallas&quot;</span>);</span><br><span class="line">		user.setPerson(p);</span><br><span class="line">		</span><br><span class="line">		String value = (String) Ognl.getValue(<span class="string">&quot;#root.person.username&quot;</span>,user); </span><br><span class="line">		System.out.println(value);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> OgnlTest().testOgnl_01();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//----------------------------------------------------</span></span><br><span class="line">	<span class="comment">//OGNL CONTEXT使用·</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_04</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		Person p1 = <span class="keyword">new</span> Person();</span><br><span class="line">		Person p2 = <span class="keyword">new</span> Person();</span><br><span class="line">		p1.setUsername(<span class="string">&quot;dirk&quot;</span>);</span><br><span class="line">		p2.setUsername(<span class="string">&quot;terri&quot;</span>);</span><br><span class="line">		</span><br><span class="line">		Map&lt;String, Person&gt; context = <span class="keyword">new</span> HashMap&lt;String, Person&gt;();</span><br><span class="line">		context.put(<span class="string">&quot;p1&quot;</span>, p1);</span><br><span class="line">		context.put(<span class="string">&quot;p2&quot;</span>, p2);</span><br><span class="line">		</span><br><span class="line">		String value = (String) Ognl.getValue(<span class="string">&quot;p1.username +&#x27;,&#x27;+p2.username&quot;</span>, context,<span class="keyword">new</span> Object());</span><br><span class="line">		System.out.println(value);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_05</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;   </span><br><span class="line">	        Person p1 = <span class="keyword">new</span> Person();   </span><br><span class="line">	        Person p2 = <span class="keyword">new</span> Person();   </span><br><span class="line">	        p1.setUsername(<span class="string">&quot;风&quot;</span>);   </span><br><span class="line">	        p2.setUsername(<span class="string">&quot;云&quot;</span>);   </span><br><span class="line">	           </span><br><span class="line">	        Map&lt;String,Person&gt; context = <span class="keyword">new</span> HashMap&lt;String,Person&gt;();   </span><br><span class="line">	        context.put(<span class="string">&quot;p1&quot;</span>, p1);   </span><br><span class="line">	        context.put(<span class="string">&quot;p2&quot;</span>, p2);   </span><br><span class="line">	           </span><br><span class="line">	        User root = <span class="keyword">new</span> User();   </span><br><span class="line">	        root.setUsername(<span class="string">&quot;雨&quot;</span>);   </span><br><span class="line">	           </span><br><span class="line">	        String value = (String)Ognl.getValue(<span class="string">&quot;#p1.username + &#x27;,&#x27; + #p2.username + &#x27;,&#x27; + username&quot;</span>, context, root);   </span><br><span class="line">	        System.out.println(value);   </span><br><span class="line">	    &#125;</span><br><span class="line">	  </span><br><span class="line">	  <span class="comment">//-------------------------------------</span></span><br><span class="line">	  <span class="comment">//not important : OGNL赋值操作   java的method反射 get set方法</span></span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_06</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;   </span><br><span class="line">	        User user = <span class="keyword">new</span> User();   </span><br><span class="line">	           </span><br><span class="line">	        <span class="comment">//给root对象的属性赋值，相当于调用user.setUsername()   </span></span><br><span class="line">	        Ognl.setValue(<span class="string">&quot;username&quot;</span>, user, <span class="string">&quot;暗之幻影&quot;</span>);   </span><br><span class="line">	           </span><br><span class="line">	        System.out.println(user.getUsername());   </span><br><span class="line">	    &#125;   </span><br><span class="line">	  </span><br><span class="line">	  </span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_07</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;   </span><br><span class="line">	        User user = <span class="keyword">new</span> User();   </span><br><span class="line">	  </span><br><span class="line">	        Map&lt;String, User&gt; context = <span class="keyword">new</span> HashMap&lt;String, User&gt;();   </span><br><span class="line">	        context.put(<span class="string">&quot;u&quot;</span>, user);   </span><br><span class="line">	           </span><br><span class="line">	        <span class="comment">//给context中的对象属性赋值，相当于调用user.setUsername()   </span></span><br><span class="line">	        Ognl.setValue(<span class="string">&quot;#u.username&quot;</span>, context, <span class="keyword">new</span> Object(), <span class="string">&quot;暗之幻影&quot;</span>);   </span><br><span class="line">	           </span><br><span class="line">	        System.out.println(user.getUsername());   </span><br><span class="line">	    &#125;   </span><br><span class="line">	  </span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_08</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;   </span><br><span class="line">	        User user = <span class="keyword">new</span> User();   </span><br><span class="line">	           </span><br><span class="line">	        Map&lt;String, User&gt; context = <span class="keyword">new</span> HashMap&lt;String, User&gt;();   </span><br><span class="line">	        context.put(<span class="string">&quot;u&quot;</span>, user);   </span><br><span class="line">	           </span><br><span class="line">	        <span class="comment">//给context中的对象属性赋值，相当于调用user.setUsername()   </span></span><br><span class="line">	        <span class="comment">//在表达式中使用=赋值操作符来赋值   </span></span><br><span class="line">	        Ognl.getValue(<span class="string">&quot;#u.username = &#x27;暗之幻影&#x27;&quot;</span>,context, <span class="keyword">new</span> Object());   </span><br><span class="line">	           </span><br><span class="line">	        System.out.println(user.getUsername());   </span><br><span class="line">	    &#125;   </span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_09</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;   </span><br><span class="line">	        User user = <span class="keyword">new</span> User();   </span><br><span class="line">	        Person p = <span class="keyword">new</span> Person();   </span><br><span class="line">	           </span><br><span class="line">	        Map&lt;String,Object&gt; context = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();   </span><br><span class="line">	        context.put(<span class="string">&quot;u&quot;</span>, user);   </span><br><span class="line">	        context.put(<span class="string">&quot;p&quot;</span>, p);   </span><br><span class="line">	           </span><br><span class="line">	        <span class="comment">//给context中的对象属性赋值，相当于调用user.setUsername()   </span></span><br><span class="line">	        <span class="comment">//在表达式中使用=赋值操作符来赋值   </span></span><br><span class="line">	        Ognl.getValue(<span class="string">&quot;#u.username = &#x27;风&#x27;,#p.username = &#x27;云&#x27;&quot;</span>,context, <span class="keyword">new</span> Object());   </span><br><span class="line">	           </span><br><span class="line">	        System.out.println(user.getUsername()+<span class="string">&quot;,&quot;</span>+p.getUsername());   </span><br><span class="line">	    &#125;   </span><br><span class="line">	    </span><br><span class="line">	  <span class="comment">//--------------------------------------</span></span><br><span class="line">	  <span class="comment">//not important 使用OGNL调用对象的方法</span></span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_10</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;   </span><br><span class="line">	        User user = <span class="keyword">new</span> User();   </span><br><span class="line">	        user.setUsername(<span class="string">&quot;暗之幻影&quot;</span>);   </span><br><span class="line">	           </span><br><span class="line">	        String value = (String)Ognl.getValue(<span class="string">&quot;getUsername()&quot;</span>, user);   </span><br><span class="line">	        System.out.println(value);   </span><br><span class="line">	    &#125;   </span><br><span class="line">	       </span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOgnl_11</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;   </span><br><span class="line">	        User user = <span class="keyword">new</span> User();   </span><br><span class="line">	           </span><br><span class="line">	        Ognl.getValue(<span class="string">&quot;setUsername(&#x27;暗之幻影&#x27;)&quot;</span>, user);   </span><br><span class="line">	        System.out.println(user.getUsername());   </span><br><span class="line">	    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-    
-
-    
-
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          Sn1pEr
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="https://sn1per-ssd.github.io/2021/03/04/OGNL入门/" title="OGNL入门" target="_blank">https://sn1per-ssd.github.io/2021/03/04/OGNL入门/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
+        <div class="article-info info-on-right">
           
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OGNL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">struct2</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jsp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">红蓝对抗</a>
         		</li>
       		
 		</ul>
 	</div>
 
-    
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/渗透测试//" class="article-tag-list-link color5">渗透测试</a>
+        			<a href="/categories/红蓝对抗//" class="article-tag-list-link color5">红蓝对抗</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://sn1per-ssd.github.io/2021/03/04/OGNL%E5%85%A5%E9%97%A8/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
-  
-    <a href="/2021/03/06/jsp%E9%A9%AC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          jsp马
-        
-      </div>
-    </a>
   
   
-    <a href="/2021/03/04/%E9%83%A8%E5%88%86%E6%A1%86%E6%9E%B6exp/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">部分框架exp</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.css">
-<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.0/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: 'aa4b4451b3c3cf5c9d80',
-  	clientSecret: '6e89799af07ac80e892a2244ae940e450d29c85c',
-  	repo: 'gitalk',
-  	owner: 'Sn1pEr-ssd',
-  	admin: ['Sn1pEr-ssd'],
-  	id: 'Thu Mar 04 2021 19:58:51 GMT+0800',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-
-
-
-
-
-
-
+    
 
 
           </div>
@@ -520,10 +313,10 @@ gitalk.render('gitalk-container')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
